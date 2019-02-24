@@ -1,8 +1,8 @@
 <template>
-  <div>
-    <div class="page-container">
-      <h1>Title</h1>
-      <h3>Subtitle</h3>
+  <div class="page-wrapper">
+    <div class="main-container">
+      <h1 lass="title">Title</h1>
+      <h3 class="subtitle">Subtitle</h3>
       <div class="form-container">
         <div class="flex-row">
           <div class="col-9 form-content">
@@ -10,9 +10,12 @@
               <div class="col-8">
                 <div class="div-box">
                   <p>Div box</p>
-                </div>Based on
-                <span id="income-value">____</span> income in, after
-                <span id="years-value">__</span> years:
+                </div>
+                <p>
+                  Based on
+                  <span id="income-value">____</span> income in, after
+                  <span id="years-value">__</span> years:
+                </p>
               </div>
               <div class="col-4">
                 <div class="form-group">
@@ -33,7 +36,7 @@
                     >
                     
                     <label for="hsa-input">HSA (coming soon)</label>
-                    <input type="text" v-model="hsa" id="hsa-input" name="hsa-input">
+                    <input type="text" id="hsa-input" name="hsa-input">
 
                     <div class="select-box-contanier">
                       <div>
@@ -63,8 +66,8 @@
               </div>
             </div>
           </div>
-          <div class="col-3 adv-content">
-            <h2>adv</h2>
+          <div class="col-3 ads-content">
+            <p>Div box for ads</p>
           </div>
         </div>
       </div>
@@ -80,15 +83,10 @@ export default {
   name: "AppForm",
   data() {
     return {
-      rangeSliderValue: "",
-      hsa: ""
+      rangeSliderValue: ""
     };
   },
-  computed: {
-    rangeSliderValue2: function() {
-      console.log(this.rangeSliderValue);
-    }
-  },
+  computed: {},
   props: {}
 };
 </script>
@@ -98,10 +96,9 @@ export default {
 h1 {
   margin-left: 150px;
 }
-h3 {
-  margin: 40px 0 0;
-}
-.page-container {
+
+.main-container {
+  min-height: calc(100vh - 70px);
   max-width: 1200px;
   margin: 0 auto;
   display: block;
@@ -132,8 +129,33 @@ h3 {
   padding-left: 3px;
 }
 
+.col-8 p {
+  margin-left: 15px;
+}
+
+.ads-content p {
+  margin-left: 15px;
+}
+
+@media screen and (max-width: 1022px) {
+  .col-9,
+  .col-8,
+  .col-4,
+  .col-3 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  #contribution-range-input {
+    display: block;
+  }
+  .form-group {
+    max-width: 280px;
+    margin: auto;
+  }
+}
+
 .form-content,
-.adv-content {
+.ads-content {
   border: solid rgba(0, 0, 0, 0.2);
 }
 
@@ -214,5 +236,9 @@ select {
 }
 #state-select {
   width: 50px;
+}
+
+footer {
+  height: 50px;
 }
 </style>
